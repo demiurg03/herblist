@@ -60,8 +60,10 @@ drogon_create_views(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/views
 target_include_directories(${PROJECT_NAME}
     PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/models
-    ${CMAKE_CURRENT_BINARY_DIR}/
+    ${CMAKE_CURRENT_SOURCE_DIR}/controllers
     )
+
+
 target_sources(${PROJECT_NAME}
     PRIVATE
     ${SRC_DIR}
@@ -79,6 +81,7 @@ target_sources(${PROJECT_NAME}
 
 file(COPY font DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 file(COPY herb DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY config.json DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 
 
