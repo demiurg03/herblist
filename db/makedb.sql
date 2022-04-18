@@ -1,0 +1,10 @@
+CREATE TABLE "Herb" (
+	"ID"	INTEGER NOT NULL,
+	"Name"	TEXT,
+	"HtmlBody"	TEXT,
+	PRIMARY KEY("ID" AUTOINCREMENT)
+);
+
+
+
+

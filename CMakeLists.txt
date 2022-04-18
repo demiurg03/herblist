@@ -77,15 +77,16 @@ target_sources(${PROJECT_NAME}
 
 # ##############################################################################
 
-# #########################################
-
+# ##############################################################################
+# copy file
 file(COPY font DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 file(COPY herb DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 file(COPY config.json DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY db DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
+# ##############################################################################
 
 
-
-# ##########################################
 
 option(ENABLED_TEST OFF)
 

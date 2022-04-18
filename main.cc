@@ -45,6 +45,7 @@ public:
 
     ADD_METHOD_TO(AdminController::render,"admin/", drogon::Get);
     ADD_METHOD_TO(AdminController::upload,"admin/upload", drogon::Post);
+
     PATH_LIST_END
 
 
@@ -109,12 +110,6 @@ public:
         LOG_INFO << "Upload new file : " << path;
 
 
-
-
-
-
-
-
         std::filesystem::remove(path);
     }
 
@@ -144,8 +139,9 @@ int main() {
     drogon::app().loadConfigFile("config.json");
 
 
-    drogon::app().setStaticFileHeaders( { {"font","font"}, {"herb", "herb"}}  );
+    drogon::app().setStaticFileHeaders( { {"font","font"}, {"herb", "herb"}, {"static", "static"} }  );
     drogon::app().setUploadPath("uploads");
+
 
 
     drogon::app().run();
