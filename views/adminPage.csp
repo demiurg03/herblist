@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>[[ title ]]</title>
+    
+    
+    <link rel="stylesheet" type="text/css" href="/font/PT/PT-Astra-Sans/PT-Astra-Sans_Regular.css"  />
+    
+    <style type="text/css" media="screen, print">
+    body { font-family: "PTAstraSansWebRegular", serif }
+    
+  </style>
+    
+     <script type="text/javascript">
+        var xhr;
+        //File uploading method
+        function UpladFile() {
+            var fileObj = document.getElementById("file").files[0]; // js get file object
+            var url =  "/admin/upload"; 
+
+            var form = new FormData(); // FormData object
+            form.append("file", fileObj); // File object
+
+            xhr = new XMLHttpRequest();  // XMLHttpRequest object
+            xhr.open("post", url, true); //post
+
+            xhr.upload.onloadstart = function(){
+                ot = new Date().getTime();
+                oloaded = 0;
+            };
+
+            xhr.send(form); 
+        }
+
+
+    </script>
+    
+    
+</head>
+<body>
+
+
+<input type="file" id="file" name="myfile" />
+<input type="button" onclick="UpladFile()" value="Upload" />
+   
+</body>
+</html> 
