@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Аир</title>
+    
+    <link rel="stylesheet" type="text/css" href="/font/PT/PT-Astra-Sans/PT-Astra-Sans_Regular.css"  />
+    
+    <style type="text/css" media="screen, print">
+    body { font-family: "PTAstraSansWebRegular", serif }
+    
+  </style>
+
+    <link rel="stylesheet" type="text/css" href="Stile.css"  />
+    
+    <style media="screen, print">
+    body { font-family: "PTAstraSansWebRegular", serif }
+    
+  </style>
+    
+</head>
+<body bgcolor=#E1FFFF>
+
+<div class="menu0">
+<ul class="menu1"> 
+<a href="indexPage.csp"><li class="menu2"><img height=70 src=resources/logo.svg alt="herblist_Logo"></li></a>
+<li class="menu3">меню1</li>
+<li class="menu3">меню2</li> 
+<li class="menu3">меню3</li> 
+</ul>
+</div>
+
+<div class="block">
+<h1 class="heading1"> аир </h1>
+<P><img src=resources/Acorus_01.webp alt="herblist_01" class="imageleft">Научное название вида буквально значит «аир тростниковый».
+
+Слово «аир» заимствовано из греч. ἄκορος через тур. ağir с тем же значением.[3]
+
+Видовое название происходит из лат. calamus «камыш, тростник, стебель» < др.-греч. κάλαμος с тем же значением. Греческое слово восходит к пра-и.е. k̂ólhₓōm (род. п. k̂l̥hₓmós)[4](у Покорного: пра-и.е. *k̂olǝmo-s, k̂olǝmā), которое в других и-е языках дало: лат. culmus «стебель, соломина, солома», рус. солома (из праслав. *solma), др.-англ. healm (> англ. haulm) и др., с другим расширением корня: санскр. IAST: çalākas «стебель, колос»[5]. Слова со значением «трость для письма» во многих других языках были заимствованы непосредственно из (древне)греческого, напр. санскр. कलम IAST: kaláma[6] или араб. قَلَم‎ (qálam). Исконным латинским словом для понятия «камыш, тростник» является (h)arundo.
+
+Названия на других языках[7][8][9]:
+
+на русском: аир, аир болотный, гавиар, игир, ир, ирный корень, касатик, касатник, косатик, лепёха, лепёшник, пищалка, татарский сабельник, татарское зелье, явр[10][11][12].
+на белорусском: я́ер[11], плюшнік, явар, аір, аер, ірны корань, шувар, ярай.
+на украинском: аїр[11], татарське зілля, лепеха, шувар.
+на английском: calamus, flagroot, myrtle-flag, sweet calamus, sweet-flag, sweetroot.
+на французском: acore calame, acore odorant, acore vrai.
+в других языках: немецкий — Kalmus, итальянский — calamo, испанский — cálamo aromático, calamís.
+на санскрите — vacha.</p>
+	</div>
+
+	<footer class="footer0">
+	<div class="footer1">
+	111
+	</div>
+	</footer>
+</body>
+</html> 
+
