@@ -25,7 +25,7 @@ SOFTWARE.
 
 #include <iostream>
 #include <chrono>
-
+#include <filesystem>
 
 
 #include <drogon/drogon.h>
@@ -38,6 +38,12 @@ SOFTWARE.
 
 int main() {
 
+    if( !std::filesystem::exists("static") ){
+         std::filesystem::create_directory("static");
+    }
+
+
+
     std::setlocale(LC_ALL, "");
 
 
@@ -45,7 +51,7 @@ int main() {
     drogon::app().loadConfigFile("config.json");
 
 
-    drogon::app().setStaticFileHeaders( { {"font","font"}, {"herb", "herb"}, {"static", "static"} }  );
+    drogon::app().setStaticFileHeaders( { {"font","font"}, {"static", "static"} }  );
     drogon::app().setUploadPath("uploads");
 
 

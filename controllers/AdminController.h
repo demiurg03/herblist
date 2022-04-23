@@ -5,6 +5,10 @@
 
 #include <drogon/drogon.h>
 
+#include <libzippp/libzippp.h>
+
+#include <nlohmann/json.hpp>
+
 class AdminController : public drogon::HttpController<AdminController>
 {
 
