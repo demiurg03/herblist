@@ -1,8 +1,9 @@
 body {
 	margin: 0px;
+	background-color: #EAEAEA;
   }
 .menu0 {
-	background-color: #56AAFF;
+	background-color: #629FBC;
 	height: 80px;
 }
 .menu1 {
@@ -21,7 +22,7 @@ body {
 .menu4 {
 	display: inline-block;
 	float: right;
-	padding: 45px;
+	padding: 46px;
 	font-size: 25px;
 }
 .block {
@@ -31,6 +32,7 @@ body {
 	padding: 10px;
 	margin-top: 20px;
 	margin-bottom: 20px;
+	font-size: 120%;
 }
 .imageleft {
 	float:left;
@@ -41,7 +43,7 @@ body {
 	margin: 10px;
 }
 .footer0 {
-	background-color: #56AAFF;
+	background-color: #629FBC;
 	padding: 10px;
 }
 .footer1 {
@@ -60,4 +62,16 @@ body {
 	padding: 15px;
 	font-size: 25px;
 	color: black;
+}
+.Link1 /*Credible/Убедительный*/ {
+
+}
+.Link2 /*Ambiguous/Неоднозначный*/ {
+
+}
+.Link3 /*Incredible/Невероятный*/ {
+
+}
+.Link4 /*Falsely/Ложно(для вступлений)*/ {
+
 }

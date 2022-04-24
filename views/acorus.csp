@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Аир</title>
     
-    <link rel="stylesheet" type="text/css" href="/font/PT/PT-Astra-Sans/PT-Astra-Sans_Regular.css"  />
+    <link rel="stylesheet" type="text/css" href="/../font/PT/PT-Astra-Sans/PT-Astra-Sans_Regular.css"  />
     
     <style type="text/css" media="screen, print">
     body { font-family: "PTAstraSansWebRegular", serif }
@@ -13,10 +13,14 @@
 
     <link rel="stylesheet" type="text/css" href="Stile.css"  />
     
-  </style>
+	<script src="Link.js"></script>
     
 </head>
+<<<<<<< Updated upstream
 <body bgcolor=#f0f0f0>
+=======
+<body>
+>>>>>>> Stashed changes
 
 	<div class="menu0">
 	<ul class="menu1"> 
@@ -24,7 +28,7 @@
 	<li class="menu3">Травы</li>
 	<li class="menu3">О проекте</li> 
 	<li class="menu3">Обратная связь</li> 
-	<li class="menu4">[здесь поиск]</li> 
+	<a href="searchPage.csp"><li class="menu4"><img height=25 src=resources/search.svg alt="herblist_Search"></li></a>
 	</ul>
 	</div>
 	
@@ -109,6 +113,13 @@
 
 – Мы активно назначаем порошок корней аира при проблемах с деснами. Вечером после обычной чистки зубов почистить зубы порошком аира, рот не ополаскивать, можно сплюнуть и идти спать. Или применить 1 чайную ложку – 1 ст. ложку корневищ аира из аптечных фильтр-пакетов, его можно сосать всю ночь, он хорошо прилипает к деснам. Аир может немного окрашивать пломбы в коричневый цвет. На передних зубах это выглядит не очень эстетично, зато десны целы.
 	</p>
+	
+		<ol>
+ <li>Credible/Убедительный</li>
+ <li>Ambiguous/Неоднозначный</li>
+ <li>Incredible/Невероятный</li>
+ <li>Falsely/Ложно</li>
+</ol>
 	</div>
 
 	<footer>
