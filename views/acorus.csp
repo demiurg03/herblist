@@ -16,11 +16,7 @@
 	<script src="Link.js"></script>
     
 </head>
-<<<<<<< Updated upstream
-<body bgcolor=#f0f0f0>
-=======
 <body>
->>>>>>> Stashed changes
 
 	<div class="menu0">
 	<ul class="menu1"> 
@@ -115,11 +111,11 @@
 	</p>
 	
 		<ol>
- <li>Credible/Убедительный</li>
- <li>Ambiguous/Неоднозначный</li>
- <li>Incredible/Невероятный</li>
- <li>Falsely/Ложно</li>
-</ol>
+		<li><p class=Link1></p>Credible/Убедительный</li>
+		<li><p class=Link2></p>Ambiguous/Неоднозначный</li>
+		<li><p class=Link3></p>Incredible/Невероятный</li>
+		<li><p class=Link4></p>Falsely/Ложно</li>
+	</ol>
 	</div>
 
 	<footer>
