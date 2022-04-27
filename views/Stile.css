@@ -98,3 +98,16 @@ body {
     height: 16px;
 	margin: 0px;
 }
+.big {
+   background: #ccc;
+   height: 3000px;
+}
+
+.btn {
+   font-size: 14px;
+}
+
+.box {
+   background: lightgreen;
+   height: 40px;
+}
