@@ -22,7 +22,6 @@
 
 
 
-std::pair<bool, std::size_t> zipFileExist(const std::string &file, const std::vector<libzippp::ZipEntry>& vze );
 
 
 

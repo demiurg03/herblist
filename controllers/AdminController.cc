@@ -275,20 +275,3 @@ void write(const std::string &data, const std::string &file){
 
 }
 
-std::pair<bool, std::size_t> zipFileExist(const std::string &file, const std::vector<libzippp::ZipEntry> &vze){
-
-    std::size_t i = 0;
-
-    for(const auto &it :vze){
-        if(it.getName() == file){
-
-            return {true, i};
-
-
-        }
-
-        i++;
-    }
-
-    return {false, 0};
-}
