@@ -89,9 +89,20 @@ file(COPY db DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 
 
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(HL_IS_DEBUG 1)
+else()
+    set(HL_IS_DEBUG 0)
+endif(  )
+
+
+
+
+configure_file(const.h.in ${CMAKE_CURRENT_SOURCE_DIR}/const.h )
+
 option(ENABLED_TEST OFF)
 
 
 if(ENABLED_TEST)
-add_subdirectory(test)
+    add_subdirectory(test)
 endif()

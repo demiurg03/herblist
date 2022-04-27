@@ -33,10 +33,15 @@ SOFTWARE.
 #include <nlohmann/json.hpp>
 
 
-
+#include "const.h"
 
 
 int main() {
+
+
+    if constexpr(gv_isDebug){
+        std::cout << "start is debug mode" << std::endl;
+    }
 
     if( !std::filesystem::exists("static") ){
          std::filesystem::create_directory("static");

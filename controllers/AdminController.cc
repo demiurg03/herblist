@@ -54,9 +54,9 @@ void AdminController::upload(const drogon::HttpRequestPtr &req, std::function<vo
 #include <fstream>
 
 void write(const std::string &data, const std::string &file){
-std::ofstream files(file);
+    std::ofstream files(file);
 
-files << data;
+    files << data;
 
 
 
@@ -171,6 +171,11 @@ bool AdminController::fileWork(const std::string &stringPath){
 }
 
 bool AdminController::isCorrectAddress(const drogon::HttpRequestPtr &req){
+
+
+    if constexpr(gv_isDebug){
+        return true;
+    }
 
     const auto ip = req->getLocalAddr().toIp();
 
