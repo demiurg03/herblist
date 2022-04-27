@@ -30,8 +30,10 @@ add_executable(${PROJECT_NAME} main.cc)
 # and comment out the following lines
 find_package(Drogon CONFIG REQUIRED)
 find_package(fmt REQUIRED)
+#find_package(libzippp REQUIRED)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Drogon::Drogon fmt::fmt)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE Drogon::Drogon fmt::fmt zippp_static zip)
 
 # ##############################################################################
 
@@ -80,7 +82,6 @@ target_sources(${PROJECT_NAME}
 # ##############################################################################
 # copy file
 file(COPY font DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-file(COPY herb DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 file(COPY config.json DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 file(COPY db DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
@@ -88,9 +89,20 @@ file(COPY db DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 
 
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(HL_IS_DEBUG 1)
+else()
+    set(HL_IS_DEBUG 0)
+endif(  )
+
+
+
+
+configure_file(const.h.in ${CMAKE_CURRENT_SOURCE_DIR}/const.h )
+
 option(ENABLED_TEST OFF)
 
 
 if(ENABLED_TEST)
-add_subdirectory(test)
+    add_subdirectory(test)
 endif()

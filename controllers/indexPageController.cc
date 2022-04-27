@@ -4,8 +4,6 @@ void indexPageController::asyncHandleHttpRequest( [[maybe_unused]] const HttpReq
 {
     using namespace drogon;
 
-
-
     HttpViewData data;
 
     auto resp = HttpResponse::newHttpViewResponse("indexPage.csp", data);
