@@ -51,48 +51,65 @@ void AdminController::upload(const drogon::HttpRequestPtr &req, std::function<vo
     callback(HttpResponse::newHttpResponse());
 }
 
-#include <fstream>
 
-void write(const std::string &data, const std::string &file){
-    std::ofstream files(file);
+class HerbParserFromZip{
+public:
 
-    files << data;
+    HerbParserFromZip(libzippp::ZipArchive &zip) : _zip(zip){
 
-
-
-
-}
+    }
 
 
-struct Herb{
-    std::string name;
-    std::map<std::string,std::string> tr_name;
-    std::map<std::string,std::string> tr_content;
-};
+    Herb parse(){
 
 
 
-std::pair<bool, std::size_t> zipFileExist(const std::string &file, const std::vector<libzippp::ZipEntry>& vze ){
 
-    std::size_t i = 0;
 
-    for(const auto &it :vze){
-        if(it.getName() == file){
 
-            return {true, i};
+
+    }
+
+
+
+
+
+private:
+    libzippp::ZipArchive &_zip;
+
+
+    //FIXME: notWork
+    std::size_t _countHerb(){
+        const auto fileList = _zip.getEntries();
+
+        const auto count = 1ul;
+
+        for(const auto &file : fileList){
+
+            if( !file.isDirectory() ){
+                continue;
+            }
+
+            const auto fname = file.getName();
 
 
         }
 
-        i++;
+
+
+        return count;
     }
 
-    return {false,0};
-}
 
+
+
+
+};
 
 bool AdminController::fileWork(const std::string &stringPath){
     namespace fs = std::filesystem;
+    using namespace libzippp;
+
 
     fs::path path(stringPath);
 
@@ -100,72 +117,15 @@ bool AdminController::fileWork(const std::string &stringPath){
     LOG_INFO << "Upload new file : " << path;
 
 
-    using namespace libzippp;
+    FileRemover fr(path.c_str());
 
-    libzippp::ZipArchive zf(path.c_str());
+
+    ZipArchive zf(path.c_str());
     zf.open(libzippp::ZipArchive::ReadOnly);
 
+    HerbParserFromZip parser(zf);
+    auto herb =  parser.parse();
 
-
-    const auto et = zf.getEntries();
-
-    std::string rootDir = et.at(0).getName();
-
-    rootDir = rootDir.substr(0, rootDir.find('/')+1);
-
-    std::string jsonPath = rootDir+"config.json";
-
-
-
-
-
-
-    auto jsonDoc =  nlohmann::json::parse(et.at(zipFileExist(jsonPath, et).second).readAsText());
-
-    Herb herb;
-
-
-    herb.name = jsonDoc["name"];
-
-    for(const auto &it: jsonDoc["tr_content"]){
-        std::string lang = it["lang"];
-        std::string filePath = it["file"];
-
-
-        herb.tr_content.insert({lang,filePath});
-    }
-
-
-    for(const auto &it: jsonDoc["tr_name"]){
-        std::string lang = it["lang"];
-        std::string name = it["name"];
-
-        herb.tr_name.insert({lang,name});
-    }
-
-
-
-    fs::create_directory("static/" + herb.name);
-
-
-    for(const auto &it : herb.tr_content){
-        const auto fileName =  it.second;
-        const auto zipFileName = rootDir+it.second;
-
-        std::string path =  "static/"+herb.name+"/"+it.second;
-
-
-
-
-        write(et.at(zipFileExist(zipFileName, et).second).readAsText(), path);
-
-
-    }
-
-
-
-
-    fs::remove(stringPath);
 
     return true;
 }
@@ -183,4 +143,32 @@ bool AdminController::isCorrectAddress(const drogon::HttpRequestPtr &req){
         return true;
 
     return false;
+}
+
+void write(const std::string &data, const std::string &file){
+    std::ofstream files(file);
+
+    files << data;
+
+
+
+
+}
+
+std::pair<bool, std::size_t> zipFileExist(const std::string &file, const std::vector<libzippp::ZipEntry> &vze){
+
+    std::size_t i = 0;
+
+    for(const auto &it :vze){
+        if(it.getName() == file){
+
+            return {true, i};
+
+
+        }
+
+        i++;
+    }
+
+    return {false, 0};
 }

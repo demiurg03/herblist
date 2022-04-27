@@ -40,7 +40,7 @@ int main() {
 
 
     if constexpr(gv_isDebug){
-        std::cout << "start is debug mode" << std::endl;
+        LOG_INFO << "start is debug mode";
     }
 
     if( !std::filesystem::exists("static") ){

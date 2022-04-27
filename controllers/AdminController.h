@@ -12,6 +12,45 @@
 #include "const.h"
 
 
+#include <fstream>
+
+
+
+std::pair<bool, std::size_t> zipFileExist(const std::string &file, const std::vector<libzippp::ZipEntry>& vze );
+
+
+
+
+void write(const std::string &data, const std::string &file);
+
+
+struct Herb{
+    std::string name;
+    std::map<std::string,std::string> tr_name;
+    std::map<std::string,std::string> tr_content_path;
+};
+
+class FileRemover{
+public:
+
+    FileRemover(const std::string_view path) : _path(path){
+
+    }
+
+    ~FileRemover(){
+        namespace fs = std::filesystem;
+
+        if( fs::exists( _path ) ){
+            fs::remove( _path );
+        }
+
+    }
+
+private:
+    std::string _path;
+};
+
+
 class AdminController : public drogon::HttpController<AdminController>
 {
 
