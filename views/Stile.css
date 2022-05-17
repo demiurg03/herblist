@@ -66,6 +66,10 @@ body {
 	font-size: 25px;
 	color: black;
 }
+.Link {
+	color: blue;
+	font-size: 60%;
+}
 .Link1 /*Credible/Убедительный*/ {
 	display: inline-block;
 	background: green;
@@ -97,17 +101,4 @@ body {
     width: 16px;
     height: 16px;
 	margin: 0px;
-}
-.big {
-   background: #ccc;
-   height: 3000px;
-}
-
-.btn {
-   font-size: 14px;
-}
-
-.box {
-   background: lightgreen;
-   height: 40px;
 }
