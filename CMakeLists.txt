@@ -33,7 +33,7 @@ find_package(fmt REQUIRED)
 #find_package(libzippp REQUIRED)
 
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Drogon::Drogon fmt::fmt zippp_static zip)
+target_link_libraries(${PROJECT_NAME} PRIVATE Drogon::Drogon fmt::fmt )
 
 # ##############################################################################
 
