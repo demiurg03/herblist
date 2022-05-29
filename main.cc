@@ -34,7 +34,7 @@ SOFTWARE.
 
 
 #include "const.h"
-
+#include "DBController.hpp"
 
 int main() {
 
@@ -61,9 +61,11 @@ int main() {
 
 
 
+
+
     drogon::app().run();
 
-
+        DBController::initDB();
 
     return EXIT_SUCCESS;
 }

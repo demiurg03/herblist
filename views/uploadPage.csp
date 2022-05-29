@@ -64,12 +64,12 @@ function upload(){
 
 var herbHame = document.getElementById('hname').value;
 var herbModel = document.getElementById('hmodel').value;
-var content = tinymce.get("htmeditor").getContent();
+var herbContent = tinymce.get("htmeditor").getContent();
 
 
 var url = "/admin/addHerb";
 
-postData( url , { 'herbHame': herbHame, 'herbModel':herbModel, 'content':content })
+postData( url , { 'herbHame': herbHame, 'herbModel':herbModel, 'herbContent':herbContent })
   .then((data) => {
     console.log(data); // JSON data parsed by `response.json()` call
   });

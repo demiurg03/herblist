@@ -1,18 +1,12 @@
 #include <drogon/drogon.h>
-
+#include "DBController.hpp"
+#include "NotImplemented.hpp"
 
 using Callback =  std::function<void(const drogon::HttpResponsePtr &)> &&;
 
 class HerbController : public drogon::HttpController<HerbController>
 {
 
-    //FIXME: rename
-    struct Item{
-
-        std::string name;
-        std::string htmlBody;
-
-    };
 
 
 public:
@@ -28,12 +22,13 @@ public:
 
 
 
-    void renderHerber(const drogon::HttpRequestPtr &req,  std::function<void(const drogon::HttpResponsePtr &)> &&callback, const std::string& herbName);
+    void renderHerber(const drogon::HttpRequestPtr &req,
+                      std::function<void(const drogon::HttpResponsePtr &)> &&callback,
+                      const std::string& herbModel);
 
 
 
 
-    std::optional<Item> getItem(const std::string &name);
 
 
 };

@@ -65,11 +65,18 @@ void AdminController::addHerb(const drogon::HttpRequestPtr &req, std::function<v
 
 
     auto jsonDoc = *requestBody;
-    LOG_DEBUG << jsonDoc.toStyledString();
+
+    const auto herb = jsonToHerb(jsonDoc);
+
+    DBController::addHerb(herb);
+
 
 
     Json::Value resp;
     resp["status"] = "ok";
+
+
+
 
 
     auto response = HttpResponse::newHttpJsonResponse(resp);
