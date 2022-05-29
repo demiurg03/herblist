@@ -19,7 +19,9 @@ endif ()
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_executable(${PROJECT_NAME} main.cc DBController.cpp Herb.cpp NotImplemented.cpp)
+file(GLOB herblist_SRC "src/*.cpp" )
+
+add_executable(${PROJECT_NAME} ${herblist_SRC})
 
 # ##############################################################################
 # If you include the drogon source code locally in your project, use this method
@@ -62,6 +64,7 @@ target_include_directories(${PROJECT_NAME}
     PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/models
     ${CMAKE_CURRENT_SOURCE_DIR}/controllers
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
     )
 
 
@@ -97,7 +100,7 @@ endif(  )
 
 
 
-configure_file(const.h.in ${CMAKE_CURRENT_SOURCE_DIR}/const.h )
+configure_file(include/const.h.in ${CMAKE_CURRENT_SOURCE_DIR}/include/const.h )
 
 option(ENABLED_TEST OFF)
 
