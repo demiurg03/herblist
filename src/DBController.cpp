@@ -22,13 +22,7 @@ void DBController::initDB(){
 
 void DBController::addHerb(const Herb herb){
 
-
     Instance()._addHerb(herb);
-
-
-
-
-
 }
 
 std::optional<Herb> DBController::getHerbByModel(const std::string &model){
@@ -83,6 +77,11 @@ void DBController::_addHerb(const Herb herb){
 
 std::optional<Herb> DBController::_getHerbByModel(const std::string &model){
 
+
+    if( _cache.contains(model) ){
+        return _cache.at(model);
+    }
+
     auto client = drogon::app().getDbClient();
 
     auto result = client->execSqlSync(R"(SELECT * FROM Herb WHERE Model = $1;)", model);
@@ -97,6 +96,10 @@ std::optional<Herb> DBController::_getHerbByModel(const std::string &model){
     herb.model = result.at(0).at("Model").as<std::string>();
     herb.name = result.at(0).at("Name").as<std::string>();
     herb.content = result.at(0).at("Content").as<std::string>();
+
+
+
+    _cache.change(herb);
 
     return herb;
 }
@@ -117,7 +120,7 @@ std::vector<Herb> DBController::_getAllHerb(){
         herb.id = row.at("id").as<std::size_t>();
         herb.model = row.at("Model").as<std::string>();
         herb.name = row.at("Name").as<std::string>();
-        herb.content =row.at("Content").as<std::string>();
+        herb.content = row.at("Content").as<std::string>();
 
         herbs.push_back( herb );
 
