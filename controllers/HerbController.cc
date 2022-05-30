@@ -1,10 +1,25 @@
+/**
+ *
+ *  @file HerbController.cpp
+ *  @author Maxim Palshin
+ *
+ *  Copyright 2022, Maxim Palshin.  All rights reserved.
+ *  Use of this source code is governed by a MIT license
+ *  that can be found in the License file.
+ *
+ *  herblist
+ *
+ */
+
+
+
 #include "HerbController.h"
 
-void HerbController::renderHerber( [[maybe_unused]]  const drogon::HttpRequestPtr &req, Callback callback, const std::string& herbName) {
+void HerbController::renderHerber( [[maybe_unused]]  const drogon::HttpRequestPtr &req, Callback callback, const std::string& herbModel) {
     using namespace drogon;
 
 
-    const auto item = getItem(herbName);
+    const auto item = DBController::getHerbByModel(herbModel);
 
     if( !item.has_value() ){
 
@@ -19,7 +34,7 @@ void HerbController::renderHerber( [[maybe_unused]]  const drogon::HttpRequestPt
 
 
     data.insert("title", itemValue.name);
-    data.insert("body", itemValue.htmlBody);
+    data.insert("body", itemValue.content);
 
     auto resp = HttpResponse::newHttpViewResponse("herbPage.csp", data);
 
@@ -36,47 +51,29 @@ void HerbController::renderHerber( [[maybe_unused]]  const drogon::HttpRequestPt
 
 void HerbController::render(const drogon::HttpRequestPtr &req, Callback callback){
 
-    auto clientPtr = drogon::app().getDbClient();
-    auto result = clientPtr->execSqlSync(R"(SELECT * FROM Herb;)");
 
     std::stringstream html;
 
+   const auto herbs = DBController::getAllHerb();
+       for ( const auto &herb : herbs ) {
 
-    for ( const auto &row : result ) {
+           const auto name = herb.name;
+           const auto model = herb.model;
 
-        const auto name = row.at("Name").as<std::string>();
+           html << R"(<p><a href="/herb/)" <<  model << "\">" << name  << "</a></p>";
 
-        html << R"(<p><a href="/herb/)" <<  name << "\">" << name  << "</a></p>";
-
-    }
-
+       }
 
 
-    auto resp = drogon::HttpResponse::newHttpResponse();
 
-    resp->setBody( html.str() );
+       auto resp = drogon::HttpResponse::newHttpResponse();
 
-    callback(resp);
+       resp->setBody( html.str() );
+
+       callback(resp);
+
 
 }
 
 
 
-std::optional<HerbController::Item> HerbController::getItem(const std::string &name){
-
-    auto clientPtr = drogon::app().getDbClient();
-    auto result = clientPtr->execSqlSync(R"(SELECT * FROM Herb WHERE Name = $1;)", name);
-
-    if ( result.empty() ){
-        return {};
-    }
-
-
-    Item item;
-    item.name = result.at(0).at("Name").as<std::string>();
-    item.htmlBody = result.at(0).at("HtmlBody").as<std::string>();
-
-
-
-    return item;
-}
