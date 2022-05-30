@@ -22,13 +22,13 @@ private:
 
     std::string _text;
 
-    NotImplemented(const std::string message, const std::string function);;
+    NotImplemented(const std::string &message, const std::string &function);;
 
 public:
 
     NotImplemented();
 
-    NotImplemented(const char* message);
+    NotImplemented(const std::string &message);
 
     virtual const char *what() const throw();
 };

@@ -14,7 +14,7 @@
 
 #include "NotImplemented.hpp"
 
-NotImplemented::NotImplemented(const std::string message, const std::string function)
+NotImplemented::NotImplemented(const std::string &message, const std::string &function)
     :
       std::logic_error("Not Implemented")
 {
@@ -29,7 +29,7 @@ NotImplemented::NotImplemented()
 {
 }
 
-NotImplemented::NotImplemented(const char *message)
+NotImplemented::NotImplemented(const std::string &message)
     :
       NotImplemented(message, __FUNCTION__)
 {
