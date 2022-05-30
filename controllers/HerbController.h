@@ -1,3 +1,22 @@
+/**
+ *
+ *  @file HerbController.h
+ *  @author Maxim Palshin
+ *
+ *  Copyright 2022, Maxim Palshin.  All rights reserved.
+ *  Use of this source code is governed by a MIT license
+ *  that can be found in the License file.
+ *
+ *  herblist
+ *
+ */
+
+
+#pragma once
+
+
+
+
 #include <drogon/drogon.h>
 #include "DBController.hpp"
 #include "NotImplemented.hpp"
