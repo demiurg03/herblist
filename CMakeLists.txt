@@ -88,7 +88,9 @@ file(COPY config.json DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 
 # ##############################################################################
-
+if (MSVC)
+    target_compile_options(${PROJECT_NAME} /MP ...)
+endif()
 
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
