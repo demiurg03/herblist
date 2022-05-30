@@ -1,3 +1,18 @@
+/**
+ *
+ *  @file HerbController.cpp
+ *  @author Maxim Palshin
+ *
+ *  Copyright 2022, Maxim Palshin.  All rights reserved.
+ *  Use of this source code is governed by a MIT license
+ *  that can be found in the License file.
+ *
+ *  herblist
+ *
+ */
+
+
+
 #include "HerbController.h"
 
 void HerbController::renderHerber( [[maybe_unused]]  const drogon::HttpRequestPtr &req, Callback callback, const std::string& herbModel) {
@@ -36,7 +51,26 @@ void HerbController::renderHerber( [[maybe_unused]]  const drogon::HttpRequestPt
 
 void HerbController::render(const drogon::HttpRequestPtr &req, Callback callback){
 
-    throw  NotImplemented("HerbController::render");
+
+    std::stringstream html;
+
+   const auto herbs = DBController::getAllHerb();
+       for ( const auto &herb : herbs ) {
+
+           const auto name = herb.name;
+           const auto model = herb.model;
+
+           html << R"(<p><a href="/herb/)" <<  model << "\">" << name  << "</a></p>";
+
+       }
+
+
+
+       auto resp = drogon::HttpResponse::newHttpResponse();
+
+       resp->setBody( html.str() );
+
+       callback(resp);
 
 
 }

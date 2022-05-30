@@ -1,3 +1,17 @@
+/**
+ *
+ *  @file AdminController.cpp
+ *  @author Maxim Palshin
+ *
+ *  Copyright 2022, Maxim Palshin.  All rights reserved.
+ *  Use of this source code is governed by a MIT license
+ *  that can be found in the License file.
+ *
+ *  herblist
+ *
+ */
+
+
 #include "AdminController.h"
 
 void AdminController::render(const drogon::HttpRequestPtr &req, std::function<void (const drogon::HttpResponsePtr &)> &&callback){

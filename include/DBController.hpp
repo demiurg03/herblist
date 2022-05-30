@@ -29,10 +29,10 @@ public:
 
     static void addHerb(const Herb herb);
 
-    static std::optional<Herb> getHerbByModel(const std::string &model){
-        return Instance()._getHerbByModel( model );
-    }
+    static std::optional<Herb> getHerbByModel(const std::string &model);
 
+
+    static std::vector<Herb> getAllHerb();
 
 
 private:
@@ -47,6 +47,6 @@ private:
     void _initDb();
     void _addHerb(const Herb herb);
     std::optional<Herb> _getHerbByModel(const std::string &model);
-
+    static std::vector<Herb> _getAllHerb();
 
 };

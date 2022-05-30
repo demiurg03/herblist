@@ -1,3 +1,17 @@
+/**
+ *
+ *  @file NotImplemented.cpp
+ *  @author Maxim Palshin
+ *
+ *  Copyright 2022, Maxim Palshin.  All rights reserved.
+ *  Use of this source code is governed by a MIT license
+ *  that can be found in the License file.
+ *
+ *  herblist
+ *
+ */
+
+
 #include "NotImplemented.hpp"
 
 NotImplemented::NotImplemented(const std::string message, const std::string function)

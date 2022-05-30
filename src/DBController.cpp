@@ -31,6 +31,14 @@ Instance()._addHerb(herb);
 
 }
 
+std::optional<Herb> DBController::getHerbByModel(const std::string &model){
+    return Instance()._getHerbByModel( model );
+}
+
+std::vector<Herb> DBController::getAllHerb(){
+    return Instance()._getAllHerb();
+}
+
 DBController &DBController::Instance()
 {
     static DBController theSingleInstance;
@@ -79,4 +87,30 @@ std::optional<Herb> DBController::_getHerbByModel(const std::string &model){
     herb.content = result.at(0).at("Content").as<std::string>();
 
     return herb;
+}
+
+std::vector<Herb> DBController::_getAllHerb(){
+
+
+
+    auto client = drogon::app().getDbClient();
+     auto result = client->execSqlSync(R"(SELECT * FROM Herb;)");
+
+
+     std::vector<Herb> herbs;
+
+      for ( const auto &row : result ) {
+
+          Herb herb;
+          herb.id = row.at("id").as<std::size_t>();
+          herb.model = row.at("Model").as<std::string>();
+          herb.name = row.at("Name").as<std::string>();
+          herb.content =row.at("Content").as<std::string>();
+
+          herbs.push_back( herb );
+
+      }
+
+
+      return herbs;
 }
