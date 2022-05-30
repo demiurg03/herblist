@@ -16,6 +16,8 @@
 
 #include <drogon/drogon.h>
 #include "Herb.hpp"
+#include "Cache.hpp"
+
 
 
 class DBController
@@ -31,13 +33,14 @@ public:
 
     static std::optional<Herb> getHerbByModel(const std::string &model);
 
-
     static std::vector<Herb> getAllHerb();
 
 
 private:
 
     static DBController& Instance();
+
+    Cache _cache;
 
     DBController();
     DBController(const DBController& root) = delete;
@@ -47,6 +50,6 @@ private:
     void _initDb();
     void _addHerb(const Herb herb);
     std::optional<Herb> _getHerbByModel(const std::string &model);
-    static std::vector<Herb> _getAllHerb();
+    std::vector<Herb> _getAllHerb();
 
 };
