@@ -23,7 +23,7 @@ void DBController::initDB(){
 void DBController::addHerb(const Herb herb){
 
 
-Instance()._addHerb(herb);
+    Instance()._addHerb(herb);
 
 
 
@@ -53,18 +53,28 @@ DBController::DBController()
 void DBController::_initDb(){
 
 
-   auto client = drogon::app().getDbClient();
+    auto client = drogon::app().getDbClient();
 
 
+    const auto result = client->execSqlSync("SELECT name FROM sqlite_schema");
 
-   client->execSqlSync(R"(CREATE TABLE "Herb" ( "Id" INTEGER NOT NULL UNIQUE, "Model" TEXT UNIQUE, "Name" TEXT, "Content"	TEXT, PRIMARY KEY("Id" AUTOINCREMENT) ))");
+    std::vector<std::string>tables;
+
+    for(const auto &row : result){
+        tables.push_back( row.at("name").as<std::string>() );
+    }
+
+
+    if( std::find( tables.begin(), tables.end(), "Herb") == tables.end() ){
+        client->execSqlSync(R"(CREATE TABLE "Herb" ( "Id" INTEGER NOT NULL UNIQUE, "Model" TEXT UNIQUE, "Name" TEXT, "Content"	TEXT, PRIMARY KEY("Id" AUTOINCREMENT) ))");
+    }
 
 }
 
 void DBController::_addHerb(const Herb herb){
 
 
-auto client = drogon::app().getDbClient();
+    auto client = drogon::app().getDbClient();
 
 
     client->execSqlSync(R"(INSERT INTO Herb(Model,Name,Content) VALUES($1,$2,$3))", herb.model,herb.name,herb.content);
@@ -96,23 +106,23 @@ std::vector<Herb> DBController::_getAllHerb(){
 
 
     auto client = drogon::app().getDbClient();
-     auto result = client->execSqlSync(R"(SELECT * FROM Herb;)");
+    auto result = client->execSqlSync(R"(SELECT * FROM Herb;)");
 
 
-     std::vector<Herb> herbs;
+    std::vector<Herb> herbs;
 
-      for ( const auto &row : result ) {
+    for ( const auto &row : result ) {
 
-          Herb herb;
-          herb.id = row.at("id").as<std::size_t>();
-          herb.model = row.at("Model").as<std::string>();
-          herb.name = row.at("Name").as<std::string>();
-          herb.content =row.at("Content").as<std::string>();
+        Herb herb;
+        herb.id = row.at("id").as<std::size_t>();
+        herb.model = row.at("Model").as<std::string>();
+        herb.name = row.at("Name").as<std::string>();
+        herb.content =row.at("Content").as<std::string>();
 
-          herbs.push_back( herb );
+        herbs.push_back( herb );
 
-      }
+    }
 
 
-      return herbs;
+    return herbs;
 }
