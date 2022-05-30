@@ -44,7 +44,7 @@ int main() {
     drogon::app().loadConfigFile("config.json");
 
 
-    drogon::app().setStaticFileHeaders( { {"font","font"}, {"static", "static"} }  );
+    drogon::app().setStaticFileHeaders( { {"static", "static"} }  );
     drogon::app().setUploadPath("uploads");
 
 

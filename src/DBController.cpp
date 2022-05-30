@@ -55,6 +55,8 @@ void DBController::_initDb(){
 
    auto client = drogon::app().getDbClient();
 
+
+
    client->execSqlSync(R"(CREATE TABLE "Herb" ( "Id" INTEGER NOT NULL UNIQUE, "Model" TEXT UNIQUE, "Name" TEXT, "Content"	TEXT, PRIMARY KEY("Id" AUTOINCREMENT) ))");
 
 }
